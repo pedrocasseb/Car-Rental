@@ -60,7 +60,7 @@ export const addCar = async (req, res)=>{
 
 export const getOwnerCars = async (req, res)=> {
     try {
-        const {_id} = req.users;
+        const {_id} = req.user;
         const cars = await Car.find({owner: _id})
         res.json({success: true, cars})
     } catch (error) {
