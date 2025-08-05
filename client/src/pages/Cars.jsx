@@ -14,17 +14,29 @@ const Cars = () => {
   const pickupDate = searchParams.get('pickupDate')
   const returnDate = searchParams.get('returnDate')
 
+  const [input, setInput] = useState('')
+
   const {axios, toast, cars} = useAppContext()
 
   const isSearchData = pickupLocation && pickupDate && returnDate
 
   const [filteredCars, setFilteredCars] = useState([])
 
+  const applyFilter = async ()=>{
+    if(input === ''){
+      setFilteredCars(cars)
+      return null
+    }
+    const filtered = cars.slice().filter((car)=>{
+      return car.brand.toLowerCase().includes(input.toLowerCase()) || car.model.toLowerCase().includes(input.toLowerCase()) || car.category.toLowerCase().includes(input.toLowerCase()) || car.transmission.toLowerCase().includes(input.toLowerCase())
+    })
+    setFilteredCars(filtered)
+  }
+
   const searchCarAvailability = async ()=>{
     const {data} = await axios.post('/api/booking/check-availability', {location: pickupLocation, pickupDate, returnDate})
     if(data.success){
       setFilteredCars(data.availableCars)
-      console.log({ pickupLocation, pickupDate, returnDate })
       if(data.availableCars.length === 0){
         toast('No cars available')
       }
@@ -33,15 +45,12 @@ const Cars = () => {
   }
 
   useEffect(()=>{
-    if(isSearchData) {
-        searchCarAvailability()
-    } else {
-        // Mostrar todos os carros disponíveis quando não há pesquisa
-        setFilteredCars(cars.filter(car => car.isAvaliable))
-    }
-},[pickupLocation, pickupDate, returnDate, cars])
+    isSearchData && searchCarAvailability()
+  },[])
 
-  const [input, setInput] = useState('')
+  useEffect(()=>{
+    cars.length > 0 && !isSearchData && applyFilter()
+  },[input, cars])
 
   return (
     <div className='mt-16'>
