@@ -75,7 +75,7 @@ const Dashboard = () => {
               </div>
               <div className='flex items-center gap-2 font-medium'>
                 <p className='text-sm text-gray-500'>{currency} {booking.price}</p>
-                <p className={`px-3 py-0.5 border rounded-full text-sm ${booking.status === 'confirmed' ? 'bg-green-400/10 text-green-600 border-green-500' : booking.status === 'pending' ? 'bg-yellow-400/10 text-yellow-600 border-yellow-500' : 'text-red-600 border-red-600 bg-red-400/10'}`}>{booking.status}</p>
+                <p className={`px-3 py-0.5 border rounded-full text-sm ${booking.status === 'Confirmed' ? 'bg-green-400/10 text-green-600 border-green-500' : booking.status === 'Pending' ? 'bg-yellow-400/10 text-yellow-600 border-yellow-500' : 'text-red-600 border-red-600 bg-red-400/10'}`}>{booking.status}</p>
               </div>
             </div>
           ))}

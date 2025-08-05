@@ -54,7 +54,7 @@ export const createBooking = async (req,res)=>{
         // Calculate price based on pickupDate and returnDate
         const picked = new Date(pickupDate)
         const returned = new Date(returnDate)
-        const noOfDays = Math.ceil((returned - picked)/ 1000 * 60 * 60 * 24)
+        const noOfDays = Math.ceil((returned - picked)/ (1000 * 60 * 60 * 24))
         const price = carData.pricePerDay * noOfDays
 
         await Booking.create({car, owner: carData.owner, user: _id, pickupDate, returnDate, price})
@@ -84,6 +84,7 @@ export const getUserBookings = async (req, res)=>{
 
 export const getOwnerBookings = async (req, res)=> {
     try {
+        console.log('User from token:', req.user)
         if(req.user.role !== 'owner'){
             return res.json({success: true, message: "Unauthorized"})
         }
@@ -103,12 +104,14 @@ export const changeBookingStatus = async (req,res)=>{
         const {bookingId, status} = req.body
         const booking = await Booking.findById(bookingId)
 
-        if(Booking.owner.toString() !== _id.toString()){
+        if(booking.owner.toString() !== _id.toString()){
             return res.json({success: false, message: Unauthorized})
         }
 
         booking.status = status
         await booking.save()
+         
+        res.json({ success: true, message: "Status updated successfully" })
     } catch (error) {
         console.log(error.message)
         res.json({success: false, message: error.message}) 
