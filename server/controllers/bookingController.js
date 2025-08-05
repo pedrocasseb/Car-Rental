@@ -3,7 +3,7 @@ import Car from "../models/Car.js"
 
 // Function to check availability of car for gine date
 
-const checkAvailability = async (Car, pickupDate, returnDate)=>{
+const checkAvailability = async (car, pickupDate, returnDate)=>{
     const bookings = await Booking.find({
         car,
         pickupDate: {$lte: returnDate},
@@ -19,7 +19,7 @@ export const checkAvailabilityOfCar = async (req,res)=>{
         const {location, pickupDate, returnDate} = req.body
         
         // fecth all available cars for the given location
-        const cars = await Car.find({location, isAvailable: true})
+        const cars = await Car.find({location, isAvaliable: true})
 
         // check car availability for the given date range using promise
         const availableCarsPromises = cars.map(async (car)=>{
