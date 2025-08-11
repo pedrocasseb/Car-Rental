@@ -1,130 +1,142 @@
+# Car Rental - Aplicação de Aluguel de Carros de Luxo
 
+![](assets/image.png "Imagem da home")
 
-Obrigado por fornecer as informações detalhadas sobre o projeto\! Com base na sua descrição, compilei um arquivo README completo para o frontend do **Car Rental**, incluindo todos os pontos que você mencionou.
+**Car Rental** é uma aplicação completa para aluguel de carros de luxo, dividida em dois componentes principais: o **frontend** (cliente) e o **backend** (servidor). Este documento abrange a configuração e as funcionalidades de ambos os módulos.
+
+## Visão Geral
+
+A aplicação permite aos usuários navegar por uma lista de carros de luxo, alugá-los e gerenciar suas reservas. Proprietários de carros podem listar seus veículos e acompanhar as reservas por meio de um painel administrativo.
 
 -----
 
-# Car Rental - Frontend
+## Frontend
 
-Este é o frontend do projeto **Car Rental**, uma aplicação para aluguel de carros de luxo. A aplicação foi desenvolvida usando **React**, **Vite** e **TailwindCSS**, e se integra com o backend através do **Axios**.
+O cliente do projeto foi desenvolvido utilizando **React**, **Vite** e **TailwindCSS**, com integração ao backend via **Axios**.
 
-## Sumário
-
-  - [Descrição](https://www.google.com/search?q=%23descri%C3%A7%C3%A3o)
-  - [Requisitos](https://www.google.com/search?q=%23requisitos)
-  - [Instalação](https://www.google.com/search?q=%23instala%C3%A7%C3%A3o)
-  - [Scripts Disponíveis](https://www.google.com/search?q=%23scripts-dispon%C3%ADveis)
-  - [Estrutura do Projeto](https://www.google.com/search?q=%23estrutura-do-projeto)
-  - [Principais Funcionalidades](https://www.google.com/search?q=%23principais-funcionalidades)
-  - [Tecnologias Utilizadas](https://www.google.com/search?q=%23tecnologias-utilizadas)
-  - [Contribuição](https://www.google.com/search?q=%23contribui%C3%A7%C3%A3o)
-
-## Descrição
-
-O frontend do Car Rental oferece uma interface moderna e responsiva para que os usuários possam navegar, alugar e gerenciar reservas de carros de luxo. Ele se conecta a uma API para obter dados de carros, processar reservas e autenticar usuários.
-
-## Requisitos
-
-Para rodar este projeto, você precisará ter o seguinte instalado:
+### Requisitos
 
   - **Node.js** (versão 16 ou superior)
   - **NPM** ou **Yarn**
 
-## Instalação
+### Instalação
 
-Siga os passos abaixo para configurar e rodar o projeto localmente:
-
-1.  **Clone o repositório:**
+1.  Clone o repositório e navegue até a pasta do cliente:
 
     ```bash
     git clone <URL_DO_REPOSITORIO>
     cd client
     ```
 
-2.  **Instale as dependências:**
+2.  Instale as dependências:
 
     ```bash
     npm install
     ```
 
-3.  **Configure as variáveis de ambiente:**
-    Crie um arquivo `.env` na raiz do diretório `client` com o seguinte conteúdo:
+3.  Crie um arquivo `.env` na raiz do diretório `client` e adicione as variáveis de ambiente:
 
     ```env
     VITE_CURRENCY=$
     VITE_BASE_URL=http://localhost:3000
     ```
 
-4.  **Inicie o servidor de desenvolvimento:**
+4.  Inicie o servidor de desenvolvimento:
 
     ```bash
     npm run dev
     ```
 
-5.  **Acesse a aplicação:**
-    Abra seu navegador e acesse: `http://localhost:5173`
+    A aplicação estará disponível em `http://localhost:5173`.
 
-## Scripts Disponíveis
-
-No diretório do projeto, você pode executar os seguintes comandos:
+### Scripts Disponíveis
 
   - `npm run dev`: Inicia o servidor de desenvolvimento.
-  - `npm run build`: Gera uma build de produção pronta para deploy.
-  - `npm run preview`: Visualiza a build de produção localmente.
-  - `npm run lint`: Executa o linter para verificar e reportar erros no código.
+  - `npm run build`: Gera a build de produção.
+  - `npm run preview`: Visualiza a build de produção.
+  - `npm run lint`: Executa o linter para verificar erros no código.
 
-## Estrutura do Projeto
+-----
 
-A estrutura de diretórios do projeto foi organizada para facilitar a escalabilidade e manutenção:
+## Backend
 
-```
-client/
-├── public/                # Arquivos públicos (favicon, etc.)
-├── src/
-│   ├── assets/            # Imagens e ícones
-│   ├── components/        # Componentes reutilizáveis
-│   ├── context/           # Context API para gerenciamento de estado
-│   ├── pages/             # Páginas principais da aplicação
-│   ├── App.jsx            # Componente principal
-│   ├── main.jsx           # Ponto de entrada do React
-│   └── index.css          # Estilos globais
-├── .env                   # Variáveis de ambiente
-├── package.json           # Dependências e scripts
-├── vite.config.js         # Configuração do Vite
-└── README.md              # Documentação do projeto
-```
+O servidor foi desenvolvido utilizando **Node.js**, **Express** e **MongoDB**, com autenticação **JWT** e integração com o **ImageKit** para upload de imagens.
 
-## Principais Funcionalidades
+### Requisitos
 
-### Páginas
+  - **Node.js** (versão 16 ou superior)
+  - **MongoDB** (local ou em nuvem)
+  - **ImageKit** (para upload de imagens)
 
-  - **Home**: Página inicial com destaque para os carros de luxo em promoção.
-  - **Cars**: Lista completa dos carros disponíveis para aluguel.
-  - **Car Details**: Exibe informações detalhadas sobre um carro específico.
-  - **My Bookings**: Permite ao usuário visualizar e gerenciar suas reservas.
-  - **Owner Dashboard**: Painel administrativo para proprietários de carros gerenciarem seus veículos.
+### Instalação
 
-### Componentes
+1.  Clone o repositório e navegue até a pasta do servidor:
 
-  - **Navbar**: Barra de navegação com menu responsivo.
-  - **Footer**: Rodapé com links úteis e informações de contato.
-  - **CarCard**: Componente reutilizável para exibir informações resumidas de um carro.
-  - **Login**: Modal para login e registro de usuários.
+    ```bash
+    git clone https://github.com/pedrocasseb/Car-Rental.git
+    cd server
+    ```
 
-## Tecnologias Utilizadas
+2.  Instale as dependências:
 
-  - **React**: Biblioteca JavaScript para a construção da interface de usuário.
-  - **Vite**: Ferramenta de build rápida que melhora a experiência de desenvolvimento.
-  - **TailwindCSS**: Framework CSS que agiliza a estilização com classes utilitárias.
-  - **Axios**: Cliente HTTP baseado em Promises para fazer requisições à API.
-  - **React Router**: Gerenciamento de rotas para navegação entre as páginas.
-  - **React Hot Toast**: Biblioteca para exibir notificações de feedback para o usuário.
+    ```bash
+    npm install
+    ```
+
+3.  Crie um arquivo `.env` na raiz do diretório `server` e adicione as variáveis de ambiente, substituindo os valores pelos seus:
+
+    ```env
+    PORT=3000
+    MONGODB_URI=<SUA_URL_DO_MONGODB>
+    JWT_SECRET=<SUA_CHAVE_SECRETA>
+    IMAGEKIT_PUBLIC_KEY=<SUA_CHAVE_PUBLICA_IMAGEKIT>
+    IMAGEKIT_PRIVATE_KEY=<SUA_CHAVE_PRIVADA_IMAGEKIT>
+    IMAGEKIT_URL_ENDPOINT=<SEU_ENDPOINT_IMAGEKIT>
+    ```
+
+4.  Inicie o servidor:
+
+    ```bash
+    npm run server
+    ```
+
+    O servidor estará disponível em `http://localhost:3000`.
+
+### Scripts Disponíveis
+
+  - `npm run server`: Inicia o servidor em modo de desenvolvimento com `nodemon`.
+  - `npm start`: Inicia o servidor em modo de produção.
+
+-----
+
+## Principais Funcionalidades da API
+
+### Rotas de Usuário
+
+  - `POST /api/user/register`: Registro de novos usuários.
+  - `POST /api/user/login`: Login de usuários.
+  - `GET /api/user/data`: Retorna os dados do usuário autenticado.
+  - `GET /api/user/cars`: Lista todos os carros disponíveis.
+
+### Rotas de Proprietário
+
+  - `POST /api/owner/add-car`: Adiciona um novo carro.
+  - `GET /api/owner/cars`: Lista os carros do proprietário.
+  - `GET /api/owner/dashboard`: Retorna dados do dashboard do proprietário.
+
+### Rotas de Reservas
+
+  - `POST /api/booking/create`: Cria uma nova reserva.
+  - `GET /api/booking/user`: Lista as reservas do usuário.
+  - `GET /api/booking/owner`: Lista as reservas do proprietário.
+
+-----
 
 ## Contribuição
 
-Contribuições são sempre bem-vindas\! Se você deseja contribuir, siga os passos abaixo:
+Contribuições são bem-vindas\! Se você deseja ajudar a melhorar o projeto, siga os passos abaixo:
 
-1.  Faça um fork deste repositório.
+1.  Faça um fork do repositório.
 2.  Crie uma nova branch para sua feature: `git checkout -b minha-feature`.
 3.  Commit suas alterações: `git commit -m "Adiciona minha feature"`.
 4.  Envie para o repositório remoto: `git push origin minha-feature`.
